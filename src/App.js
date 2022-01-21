@@ -5,15 +5,21 @@ import './App.css';
 
 class App extends React.Component{
 
+constructor(props){
 
-  state = {
+  super(props)
+  this.state ={
 
     advice : ''
   }
+
+  this.fetchAdvice = this.fetchAdvice.bind(this)
+}
   componentDidMount(){
 
     this.fetchAdvice()
   }
+
   fetchAdvice(){
 
     axios.get("https://api.adviceslip.com/advice")
@@ -41,7 +47,7 @@ class App extends React.Component{
         <div className="card">
 
           <h1 className="heading">{ this.state.advice}</h1>
-          <button className="button">
+          <button className="button" onClick={this.fetchAdvice}>
             <span>Advice Me!</span>
           </button>
 
